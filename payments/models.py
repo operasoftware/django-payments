@@ -92,7 +92,7 @@ class BasePayment(models.Model):
 
         self.status = status
         self.message = message
-        self.save(update_fields=["status", "message"])
+        self.save()
         status_changed.send(sender=type(self), instance=self)
 
     def change_fraud_status(self, status: PaymentStatus, message="", commit=True):
